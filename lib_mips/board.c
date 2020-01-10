@@ -2044,6 +2044,7 @@ void board_init_r (gd_t *id, ulong dest_addr)
 
         OperationSelect();
 
+restart:
         //default
         BootType = 'b';
 
@@ -2063,7 +2064,7 @@ void board_init_r (gd_t *id, ulong dest_addr)
                     timer1 = 0;    /* no more delay	*/
                     BootType = getc();
 
-                    printf("\n\rOption [%c] selected.\n", BootType);
+                    printf("\n\rOption [%c][%d] selected.\n", BootType,BootType);
                     break;
                 }
 
@@ -2424,6 +2425,8 @@ void board_init_r (gd_t *id, ulong dest_addr)
 #endif // RALINK_UPGRADE_BY_USB //
 
             default:
+                timer1 = CONFIG_BOOTDELAY;
+                goto restart;
 
                 printf("\nBoot Linux from Flash.\n");
 
