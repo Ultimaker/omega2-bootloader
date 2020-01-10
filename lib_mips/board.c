@@ -2016,6 +2016,20 @@ void board_init_r (gd_t *id, ulong dest_addr)
     printf("\n");
     printf("\n");
 
+   // Configure GPIO15 as digital pad
+   RALINK_REG(RT2880_AGPIOCFG_REG) |= 0x1e0000; // Display reset pin
+
+   // Configure GPIO19 and GPIO17 as output
+   RALINK_REG(RT2880_REG_PIODIR) |= 0xA0000;
+
+   // Set GPIO19, reset GPIO1
+   RALINK_REG(RT2880_REG_PIODATA) |= 0x80000;   // Do not reset Motion controller  
+   RALINK_REG(RT2880_REG_PIODATA) &= ~0x20000;  // Backlight off
+
+#define GPIO1_MODE 0x10000060
+   RALINK_REG(GPIO1_MODE) |= 0x40000000;    // SPI pin out to Motion Controller
+
+
 // #define PROGRESS_SCALE 0
 
 /*failsafe end!*/
