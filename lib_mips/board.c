@@ -2046,7 +2046,7 @@ void board_init_r (gd_t *id, ulong dest_addr)
 
 restart:
         //default
-        BootType = 'b';
+        BootType = '2';
 
         // zh@onion.io
         // wait for user input
