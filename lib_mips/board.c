@@ -2026,7 +2026,7 @@ void board_init_r (gd_t *id, ulong dest_addr)
     if (detect_rst())
     {
 
-        printf("You have %d seconds left to select a menu option...\n\n", timer1 * 8);
+        printf("You have %d seconds left to select a menu option...\n\n", timer1);
 
         OperationSelect();
 
@@ -2038,8 +2038,8 @@ void board_init_r (gd_t *id, ulong dest_addr)
         while (timer1 > 0)
         {
             --timer1;
-            /* delay 100 * 10ms */
-            for (i = 0; i < 100; ++i)
+            /* delay 16 * 60ms = ~1s */
+            for (i = 0; i < 16; ++i)
             {
 
                 led_on();
