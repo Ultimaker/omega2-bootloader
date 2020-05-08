@@ -3,4 +3,9 @@
 .depend
 *.map
 *.bin
-*.srec
+u-boot*
+
+_build
+*.ipk
+httpd/fsdata.c
+tools/mkimage
