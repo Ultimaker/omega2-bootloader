@@ -1,0 +1,7 @@
+Package: @PACKAGE_NAME@
+Version: @RELEASE_VERSION@
+Architecture: @ARCH@
+Maintainer: Ultimaker <software-embedded@ultimaker.com>
+Section: admin
+Priority: optional
+Description: Bootloader for the Omega2 board
